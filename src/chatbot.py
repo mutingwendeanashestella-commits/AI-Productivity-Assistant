@@ -31,13 +31,11 @@ Be helpful, professional, and concise. Provide actionable advice when possible."
         Returns:
             Chatbot response
         """
-        # Add user message to history
         self.conversation_history.append({
             "role": "user",
             "content": user_message
         })
         
-        # Get response from OpenAI
         response = self.client.chat.completions.create(
             model=self.model,
             system=self.system_prompt,
@@ -48,7 +46,6 @@ Be helpful, professional, and concise. Provide actionable advice when possible."
         
         assistant_message = response.choices[0].message.content
         
-        # Add assistant response to history
         self.conversation_history.append({
             "role": "assistant",
             "content": assistant_message

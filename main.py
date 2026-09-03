@@ -12,13 +12,12 @@ from src.task_planner import TaskPlanner
 from src.research_assistant import ResearchAssistant
 from src.chatbot import ProductivityChatbot
 
-# Load environment variables
 load_dotenv()
 
 def display_menu():
     """Display main menu"""
     print("\n" + "="*60)
-    print("🤖 AI-POWERED WORKPLACE PRODUCTIVITY ASSISTANT")
+    print("AI-POWERED WORKPLACE PRODUCTIVITY ASSISTANT")
     print("="*60)
     print("\nSelect an option:")
     print("1. Email Generation")
@@ -32,22 +31,22 @@ def display_menu():
 
 def main():
     """Main application loop"""
-    print("\n✨ Welcome to AI Productivity Assistant!")
+    print("\nWelcome to AI Productivity Assistant!")
     print("Powered by advanced AI and prompt engineering\n")
     
     while True:
         choice = display_menu()
         
         if choice == "1":
-            print("\n📧 EMAIL GENERATION")
+            print("\nEMAIL GENERATION")
             generator = EmailGenerator()
             topic = input("Email topic: ").strip()
             tone = input("Tone (professional/friendly): ").strip() or "professional"
             email = generator.generate(topic, tone)
-            print("\n✅ Generated Email:\n" + email)
+            print("\nGenerated Email:\n" + email)
         
         elif choice == "2":
-            print("\n📊 MEETING SUMMARIZATION")
+            print("\nMEETING SUMMARIZATION")
             summarizer = MeetingSummarizer()
             print("Paste meeting transcript (end with blank line):")
             lines = []
@@ -58,26 +57,26 @@ def main():
                 lines.append(line)
             transcript = "\n".join(lines)
             result = summarizer.summarize(transcript, "detailed")
-            print("\n✅ Meeting Summary:\n" + result["full_summary"])
+            print("\nMeeting Summary:\n" + result["full_summary"])
         
         elif choice == "3":
-            print("\n✓ TASK PLANNING")
+            print("\nTASK PLANNING")
             planner = TaskPlanner()
             project = input("Project name: ").strip()
             deadline = input("Deadline (YYYY-MM-DD): ").strip()
             scope = input("Project scope: ").strip()
             result = planner.create_plan(project, deadline, scope)
-            print("\n✅ Project Plan:\n" + result["plan"])
+            print("\nProject Plan:\n" + result["plan"])
         
         elif choice == "4":
-            print("\n🔍 RESEARCH ASSISTANCE")
+            print("\nRESEARCH ASSISTANCE")
             assistant = ResearchAssistant()
             topic = input("Research topic: ").strip()
             result = assistant.research(topic, "comprehensive")
-            print("\n✅ Research Results:\n" + result["research_findings"])
+            print("\nResearch Results:\n" + result["research_findings"])
         
         elif choice == "5":
-            print("\n💬 PRODUCTIVITY CHATBOT")
+            print("\nPRODUCTIVITY CHATBOT")
             print("Chat with your AI Assistant (type 'exit' to quit)")
             chatbot = ProductivityChatbot()
             while True:
@@ -86,14 +85,14 @@ def main():
                     break
                 if user_input:
                     response = chatbot.chat(user_input)
-                    print(f"🤖 Assistant: {response}")
+                    print(f"Assistant: {response}")
         
         elif choice == "6":
-            print("\n👋 Thank you for using AI Productivity Assistant!\n")
+            print("\nThank you for using AI Productivity Assistant!\n")
             sys.exit(0)
         
         else:
-            print("\n❌ Invalid choice. Please try again.")
+            print("\nInvalid choice. Please try again.")
 
 if __name__ == "__main__":
     main()

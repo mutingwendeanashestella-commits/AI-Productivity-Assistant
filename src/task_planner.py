@@ -5,7 +5,7 @@ Breaks down projects into actionable tasks and creates plans
 
 import os
 from openai import OpenAI
-from datetime import datetime, timedelta
+from datetime import datetime
 
 class TaskPlanner:
     """Create and manage task plans for projects"""
